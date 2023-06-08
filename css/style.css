@@ -1,0 +1,27 @@
+#wrapper{
+    position: relative;
+}
+
+#video{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+}
+
+#camera-canvas{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 50;
+}
+
+#rect-canvas{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}
+#qr-msg {
+    z-index: 999;
+}
