@@ -49,7 +49,7 @@ include "funcs.php";
   <!-- Main[End] -->
   <script>
     function msg() {
-      alert(<?php echo $_SESSION["name"]; ?>)
+      // alert(<?php echo $_SESSION["name"]; ?>)
     }
   </script>
 </body>
