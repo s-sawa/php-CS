@@ -2,8 +2,7 @@
 session_start();
 include "funcs.php";
 sschk();
-error_reporting(0);
-
+// error_reporting(0);
 
 $id = $_GET["id"];
 $read_lid = $_SESSION["lid"];
@@ -24,8 +23,6 @@ if ($status == false) {
 } else {
     $mydata = $stmt->fetch();
 }
-
-
 
 //フォロー人数
 $sql = 'SELECT COUNT(*) FROM cards_table WHERE read_lid = :read_lid';
@@ -64,6 +61,8 @@ if ($status == false) {
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script></script>
 
     <style>
         .ff {
@@ -76,19 +75,20 @@ if ($status == false) {
     </style>
 </head>
 
-<body>
-    <header>
+<body class="">
+    <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
     <!-- <div class="bg-orange-200"> -->
-    <div class="container">
+    <div class="container bg-lime-100 h-screen flex justify-center mx-auto ">
         <div>
-            <?php
-            if (empty($mydata[0])) {
-                echo "プロフィールを登録してね";
-            } else { ?>
+            <?php if (empty($mydata[0])) { ?>
+                <!-- echo "プロフィール登録してね"; -->
+                <p>まだプロフィールが登録されていません。</p>
+                <div class="bg-lime-300 text-center py-5"><a href="input.php">プロフィールを入力する</a></div>
+            <?php } else { ?>
                 <form method="post" action="insert.php" enctype="multipart/form-data">
-                    <div class="max-w-sm mx-auto my-10 rounded-xl shadow-md p-5 custom-color">
+                    <div class="test max-w-[100%] mx-auto my-10 rounded-xl shadow-lg p-5 custom-color ">
                         <div class="flex">
                             <div class="">
                                 <img class="w-32 h-32 object-cover shadow-lg rounded-full mx-auto " src="<?= $mydata["img_path"] ?>" alt="" width="100px">
@@ -116,14 +116,9 @@ if ($status == false) {
                         </div>
                     </div>
                 </form>
-                <!-- <button onclick="createQR()">QR作成</button> -->
-                <div>
-                    <!-- <button onclick="createQR('<?= $mydata["id"] ?>')">QRコードを表示する</button> -->
-                    <!-- <div id="img-qr" class="p-10"></div> -->
-                </div>
+                <p>aaa</p>
                 <div class="overlay" id="js-overlay"></div>
                 <div class="modal" id="js-modal">
-
                     <div class="modal-close__wrap">
                         <button class="modal-close" id="js-close">
                             <span></span>
@@ -131,22 +126,22 @@ if ($status == false) {
                         </button>
                     </div>
                     <div id="img-qr" class="p-10"></div>
-
-                    <p>コンテンツ・内容が入ります。</p>
                 </div>
-                <button class="modal-open" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">QRコード作成</button>
+                <button class="modal-open rounded" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">QR作成</button>
                 <!-- if終了 -->
             <?php } ?>
-
         </div>
-
-
-
     </div>
     <!-- Main[End] -->
     <script src="./js/select.js"></script>
     <script src="./js/create_QR.js"></script>
     <script>
+        const navLinks = document.querySelector('.nav-links')
+
+        function onToggleMenu(e) {
+            e.name = e.name === "menu" ? "close" : "menu";
+            navLinks.classList.toggle("top-[14%]")
+        }
         //モーダルの表示と非表示
         const modal = $("#js-modal");
         const overlay = $("#js-overlay");

@@ -5,7 +5,6 @@ sschk();
 ?>
 <?php
 $id = $_GET["id"];
-echo $id;
 require_once 'funcs.php';
 /** @var PDO $pdo */
 $pdo = db_conn();
@@ -40,9 +39,8 @@ if ($status == false) {
 </head>
 
 <body>
-    <!-- Head[Start] -->
-    <header>
-        <!-- <?php include("menu.php"); ?> -->
+    <header class="bg-white">
+        <?php include('header.php'); ?>
     </header>
     <div class="bg-orange-200">
         <form method="post" action="insert.php" enctype="multipart/form-data">

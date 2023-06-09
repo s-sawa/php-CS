@@ -1,15 +1,8 @@
 <?php
-session_start();
-include "funcs.php";
-sschk();
-
 $lid = $_SESSION["lid"];
-?>
-<?php
 require_once 'funcs.php';
 /** @var PDO $pdo */
 $pdo = db_conn();
-// $sql = 'SELECT * FROM users_info WHERE lid=:lid';
 $sql = 'SELECT COUNT(*) FROM users_info WHERE lid = :lid';
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
@@ -46,6 +39,7 @@ if ($count == 1) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>TOP</title>
     <style>
         .container {
@@ -70,7 +64,6 @@ if ($count == 1) {
 
 <body>
     <div class=container>
-        <!-- <h2 class="heading-016">Hello! <?= $_SESSION["name"]; ?>さん!</h2> -->
         <?php if ($count == 0) { ?>
             <p>プロフィールが入力されていません</p>
         <?php } ?>

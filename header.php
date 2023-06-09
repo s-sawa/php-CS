@@ -1,2 +1,67 @@
 <?php
-echo "headerだよ";
+$lid = $_SESSION["lid"];
+require_once 'funcs.php';
+/** @var PDO $pdo */
+$pdo = db_conn();
+$sql = 'SELECT COUNT(*) FROM users_info WHERE lid = :lid';
+$stmt = $pdo->prepare($sql);
+$stmt->bindValue(':lid', $lid, PDO::PARAM_STR);
+$status = $stmt->execute();
+
+if ($status == false) {
+    $error = $stmt->errorInfo();
+    exit("SQLError:" . $error[2]);
+} else {
+    $count = $stmt->fetchcolumn();
+}
+// echo $count;
+if ($count == 1) {
+    $sql2 = 'SELECT * FROM users_info WHERE lid=:lid';
+    $stmt2 = $pdo->prepare($sql2);
+    $stmt2->bindValue(':lid', $lid, PDO::PARAM_STR);
+    $status2 = $stmt2->execute();
+    if ($status2 == false) {
+        $error = $stmt2->errorInfo();
+        exit("SQLError:" . $error[2]);
+    } else {
+        $data = $stmt2->fetch();
+    }
+}
+// var_dump($data);
+// $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
+?>
+<nav class="flex justify-between items-center w-[94%] mx-auto py-2">
+    <div>
+        <img class="w-16" src="./logo/logo.png" alt="">
+    </div>
+    <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[40vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 ">
+        <ul class="flex md:flex-row flex-col md:items-center  md:gap-[4vw] gap-4">
+            <li>
+                <a class="hover:text-gray-500 md:text-sm" href="my_profile.php?id=<?= $data['id']; ?>">マイカード</a>
+            </li>
+            <li>
+                <a class="hover:text-gray-500 md:text-sm" href="u_view.php?id=<?= $data['id']; ?>">カード編集</a>
+            </li>
+            <li>
+                <a class="hover:text-gray-500 md:text-sm" href="profile_list.php">カードリスト</a>
+            </li>
+            <li>
+                <a class="hover:text-gray-500 md:text-sm" href="getcard.php">カード読み取り</a>
+            </li>
+            <li>
+                <a class="hover:text-gray-500 md:text-sm" href="logout.php">ログアウト</a>
+            </li>
+        </ul>
+    </div>
+    <div class="flex items-center gap-6">
+        <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+    </div>
+
+</nav>
+<script>
+    // const navLinks = document.querySelector('.nav-links')
+    // function onToggleMenu(e) {
+    //     e.name = e.name === "menu" ? "close" : "menu";
+    //     navLinks.classList.toggle("top-[14%]")
+    // }
+</script>

@@ -16,8 +16,7 @@ if ($status == false) {
 }
 $infos =  $stmt->fetchAll(PDO::FETCH_ASSOC); //PDO::FETCH_ASSOC[カラム名のみで取得できるモード]
 //JSONに値を渡す場合に使う
-$json = json_encode($infos, JSON_UNESCAPED_UNICODE);
-;
+$json = json_encode($infos, JSON_UNESCAPED_UNICODE);;
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +27,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./js/main.js"></script>
     <title>Document</title>
     <style>
         .test {
@@ -37,27 +37,25 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
             /* 表示したい行の数 */
             overflow: hidden;
         }
-        .custom-color {
-            background-color: <?= $mydata["theme_color"] ?>;
-        }
     </style>
 </head>
 
-<body>
-    <div class="box-border container flex mx-auto justify-center">
-        <div class="bg-gray-100">
+<body class="bg-slate-400">
+    <header class="bg-white">
+        <?php include('header.php'); ?>
+    </header>
+    <div class="box-border flex mx-auto justify-center">
+        <div class="bg-gray-200 w-[90%]">
             <?php if (count($infos) == 0) { ?>
                 <p>まだ誰のカードも登録されてないよ</p>
             <?php } ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <!-- <div class="flex flex-col md:flex-row "> -->
-                <!-- <div class="flex flex-col md:flex-row flex-wrap"> -->
                 <?php foreach ($infos as $info) : ?>
-                    <div class="max-w-sm m-5 my-10 bg-pink-200 rounded-xl shadow-md p-5">
+                    <div class="max-w-[500px] m-5 my-10 bg-[<?= $info["theme_color"] ?>] rounded-xl shadow-md p-5">
+                        <!-- <div class="max-w-sm m-5 my-10 bg-pink-200 rounded-xl shadow-md p-5"> -->
                         <div class="flex">
                             <div class="">
                                 <img class="w-32 h-32 object-cover shadow-lg rounded-full mx-auto " src="<?= $info["img_path"] ?>" alt="" width="100px">
-                                <p><?= $info["theme_color"]?></p>
                             </div>
                             <div>
                                 <span>私の名前は</span><span class="hannotate font-bold bg-slate-50 pr-2 pl-2 rounded-sm "><?= $info["name"] ?></span> !<br>
@@ -75,7 +73,6 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                 <!-- <input type="file"  name="upload_image"><br> -->
                             </div>
                         </div>
-                        <p>aaaaa</p>
                     </div>
                 <?php endforeach; ?>
 
@@ -84,6 +81,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
 
         </div>
     </div>
+
 </body>
 
 
