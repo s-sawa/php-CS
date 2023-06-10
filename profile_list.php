@@ -16,7 +16,7 @@ if ($status == false) {
 }
 $infos =  $stmt->fetchAll(PDO::FETCH_ASSOC); //PDO::FETCH_ASSOC[カラム名のみで取得できるモード]
 //JSONに値を渡す場合に使う
-$json = json_encode($infos, JSON_UNESCAPED_UNICODE);;
+$json = json_encode($infos, JSON_UNESCAPED_UNICODE);
 ?>
 
 <!DOCTYPE html>
@@ -48,44 +48,60 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);;
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
                 <?php foreach ($infos as $info) : ?>
                     <div class="w-[95%] sm:w-[70%] md:w-[80%]  my-2 bg-white shadow-lg transform duration-200 easy-in-out mx-auto bg-[<?= $info["theme_color"] ?>] ">
-                        <!-- <div class="sm:w-full  my-2 bg-white  shadow-lg  transform   duration-200 easy-in-out"> -->
                         <div class=" h-32 overflow-hidden">
                             <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
                         </div>
                         <div class="flex justify-center px-5  -mt-12">
-                            <img class="h-32 w-32 object-cover bg-white p-2 rounded-full " src="<?= $info["img_path"] ?>" alt="" />
+                            <img class="h-32 w-32 object-cover bg-white p-2 rounded-full mb-2 " src="<?= $info["img_path"] ?>" alt="" />
                         </div>
                         <div class=" ">
                             <div class="text-center px-2">
-                                <span class="text-sm inline-block mt-2 ">ニックネーム</span><br>
+                                <span class="text-sm inline-block ">ニックネーム</span><br>
                                 <span class="ff inline-block font-bold text-3xl bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= $info["nickname"] ?></span><br>
-                                <!-- <a class="text-gray-400 mt-2 hover:text-blue-500" href="https://www.instagram.com/immohitdhiman/" target="BLANK()">@immohitdhiman</a> -->
-                                <!-- <p class="mt-2 text-gray-700 text-sm ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p> -->
-                                <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $info["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 px-2 rounded-sm text-gray-700"><?= $info["zodiac"] ?></span><br>
-                                <span>血液型は</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $info["blood_type"] ?>型</span><span>だよ</span><br>
-                                <span>属性</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $info["type"] ?></span><span></span><br>
-                                <p class="text-sm mt-2">私の趣味 / 好きなこと</p>
+                                <span class="ff inline-block font-bold bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= $info["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 px-2 rounded-sm text-gray-700"><?= $info["zodiac"] ?></span><br>
+                                <span>血液型は</span><span class="ff inline-block font-bold bg-slate-50 px-2 rounded mb-2 text-gray-700"><?= $info["blood_type"] ?>型</span><span>だよ</span><br>
+                                <span>属性</span><span class="ff inline-block font-bold bg-slate-50 px-2 rounded mb-2 text-gray-700"><?= $info["type"] ?></span><span></span><br>
+                                <p class="text-sm ">私の趣味 / 好きなこと</p>
                                 <div class="">
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $info["favo1"] ?></span><br>
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $info["favo2"] ?></span><br>
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $info["favo3"] ?></span><br>
                                 </div>
-
                                 <p class="text-sm inline-block mt-2">ひとこと</p><br>
                                 <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $info["comment"] ?></span><br>
                             </div>
                             <hr class="mt-6" />
                             <div class="flex  bg-gray-50 ">
                                 <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                                    <p><span class="font-semibold">2.5 k </span> Followers</p>
+                                    <p><span class="font-semibold">
+                                            <?php
+                                            $_SESSION["list_lid"] = $info["lid"];
+                                            $list_lid = $info["lid"];
+                                            include("count_follow_list.php");
+                                            ?>
+                                        </span> Followers</p>
                                 </div>
                                 <div class="border"></div>
                                 <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
-                                    <p> <span class="font-semibold">2.0 k </span> Following</p>
+                                    <p> <span class="font-semibold">
+                                            <?php
+                                            $_SESSION["list_lid"] = $info["lid"];
+                                            $list_lid = $info["lid"];
+                                            include("count_follower_list.php");
+                                            ?>
+                                            </span> Following</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- <?php
+                            $list_lid = $info["lid"];
+                            include("count_follow_list.php");
+                            ?> -->
+                    <?php
+                    $list_lid = $info["lid"];
+                    include("count_follower_list.php");
+                    ?>
                 <?php endforeach; ?>
             </div>
         </div>
