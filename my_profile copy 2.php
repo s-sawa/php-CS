@@ -38,6 +38,7 @@ if ($status == false) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script></script>
 
     <style>
         .ff {
@@ -50,7 +51,7 @@ if ($status == false) {
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
-    <div class="container bg-neutral-50 h-screen  justify-center mx-auto ">
+    <div class="container bg-lime-100 justify-center mx-auto ">
         <!-- <div> -->
         <?php if (empty($mydata[0])) { ?>
             <!-- echo "プロフィール登録してね"; -->
@@ -58,8 +59,8 @@ if ($status == false) {
             <div class="bg-lime-300 text-center py-5"><a href="input.php">プロフィールを入力する</a></div>
         <?php } else { ?>
             <!-- <form method="post" action="insert.php" enctype="multipart/form-data"></form> -->
-            <div class="box-border flex mx-auto justify-center max-w-lg">
-                <div class="">
+            <div class="box-border flex mx-auto justify-center">
+                <div class="bg-gray-200 ">
                     <div class="">
                         <div class="w-[95%] sm:w-[70%] md:w-[80%]  my-2 bg-white shadow-lg transform duration-200 easy-in-out mx-auto bg-[<?= $mydata["theme_color"] ?>] ">
                             <!-- <div class="sm:w-full  my-2 bg-white  shadow-lg  transform   duration-200 easy-in-out"> -->
@@ -67,7 +68,7 @@ if ($status == false) {
                                 <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
                             </div>
                             <div class="flex justify-center px-5  -mt-12">
-                                <img class="h-32 w-32 object-cover bg-white p-2 rounded-full " src="<?= $mydata["img_path"] ?>" alt="" />
+                                <img class="h-32 w-32 bg-white p-2 rounded-full " src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
                             </div>
                             <div class=" ">
                                 <div class="text-center px-2">
@@ -84,6 +85,7 @@ if ($status == false) {
                                         <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $mydata["favo2"] ?></span><br>
                                         <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $mydata["favo3"] ?></span><br>
                                     </div>
+
                                     <p class="text-sm inline-block mt-2">ひとこと</p><br>
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["comment"] ?></span><br>
                                 </div>
@@ -112,11 +114,10 @@ if ($status == false) {
                 </div>
                 <div id="img-qr" class="p-10"></div>
             </div>
-            <div class="w-full flex justify-center">
-                <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">フォローしてもらう</button>
-            </div>
+            <button class="modal-open rounded" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">フォローしてもらう</button>
             <!-- if終了 -->
         <?php } ?>
+        <!-- </div> -->
     </div>
     <script src="./js/select.js"></script>
     <script src="./js/create_QR.js"></script>

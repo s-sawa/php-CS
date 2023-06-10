@@ -51,53 +51,63 @@ if ($status == false) {
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
-    <div class="container bg-lime-100 h-screen flex justify-center mx-auto ">
-        <div>
-            <?php if (empty($mydata[0])) { ?>
-                <p>まだプロフィールが登録されていません。</p>
-                <div class="bg-lime-300 text-center py-5"><a href="input.php">プロフィールを入力する</a></div>
-            <?php } else { ?>
-                <form method="post" action="insert.php" enctype="multipart/form-data">
-                    <div class="test max-w-[100%] mx-auto my-10 rounded-xl shadow-lg p-5 bg-[<?= $mydata["theme_color"] ?>]">
-                        <div class="flex">
-                            <div class="">
-                                <img class="w-32 h-32 object-cover shadow-lg rounded-full mx-auto " src="<?= $mydata["img_path"] ?>" alt="" width="100px">
-                                <?php require_once("./count_follow.php")  ?>
-                                <span>フォロー</span><br>
-                                <?php require_once("./count_follower.php")  ?>
-                                <span>フォロワー</span>
-                            </div>
+    <div class="container bg-lime-100 justify-center mx-auto ">
+        <!-- <div> -->
+        <?php if (empty($mydata[0])) { ?>
+            <!-- echo "プロフィール登録してね"; -->
+            <p>まだプロフィールが登録されていません。</p>
+            <div class="bg-lime-300 text-center py-5"><a href="input.php">プロフィールを入力する</a></div>
+        <?php } else { ?>
+            <form method="post" action="insert.php" enctype="multipart/form-data">
+                <div class="test max-w-[500px] mx-auto my-10 rounded-xl shadow-lg p-5 bg-[<?= $mydata["theme_color"] ?>]">
+                    <div class="flex">
+                        <div class="">
+                            <img class="w-32 h-32 object-cover shadow-lg rounded-full mx-auto " src="<?= $mydata["img_path"] ?>" alt="" width="100px">
+                            <?php require_once("./count_follow.php")  ?>
+                            <span class="text-sm">フォロー</span><br>
+                            <?php require_once("./count_follower.php")  ?>
+                            <span class="text-sm">フォロワー</span>
+                        </div>
+                        <div>
+                            <?php
+                            if ($mydata["gender"] == "男性") {
+                                $i = "僕";
+                            } elseif ($mydata["gender"] == "女性") {
+                                $i = "私";
+                            } else {
+                                $i = "自分";
+                            }
+                            ?>
+                            <span><?= $i ?>の名前は</span><span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700 "><?= $mydata["name"] ?></span>!<br>
+                            <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700 "><?= $mydata["nickname"] ?></span><span>って呼んでね</span><br>
+                            <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700"><?= $mydata["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700"><?= $mydata["zodiac"] ?></span>
+                            <span>で血液型は</span><span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700"><?= $mydata["blood_type"] ?>型だよ</span><br>
                             <div>
-                                <span>私の名前は</span><span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm "><?= $mydata["name"] ?></span> !<br>
-                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm "><?= $mydata["nickname"] ?></span><span>って呼んでね！</span><br>
-                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm"><?= $mydata["gender"] ?></span><br>
-                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm"><?= $mydata["blood_type"] ?>型</span><br>
-                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm"><?= $mydata["birthmonth"] ?>月</span><span>生まれで</span><br>
-                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm"><?= $mydata["comment"] ?></span><br>
-                                <div>
-                                    <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm">#<?= $mydata["favo1"] ?></span><br>
-                                    <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm">#<?= $mydata["favo2"] ?></span><br>
-                                    <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm">#<?= $mydata["favo3"] ?></span><br>
-                                </div>
-                                <input type=" text" name="lid" hidden value="<?= $_SESSION["lid"] ?>">
+                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700">#<?= $mydata["favo1"] ?></span><br>
+                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700">#<?= $mydata["favo2"] ?></span><br>
+                                <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700">#<?= $mydata["favo3"] ?></span><br>
                             </div>
+                            <span class="ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm text-gray-700"><?= $mydata["comment"] ?></span><br>
+
+                            <input type=" text" name="lid" hidden value="<?= $_SESSION["lid"] ?>">
                         </div>
                     </div>
-                </form>
-                <div class="overlay" id="js-overlay"></div>
-                <div class="modal" id="js-modal">
-                    <div class="modal-close__wrap">
-                        <button class="modal-close" id="js-close">
-                            <span></span>
-                            <span></span>
-                        </button>
-                    </div>
-                    <div id="img-qr" class="p-10"></div>
                 </div>
-                <button class="modal-open rounded" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">QR作成</button>
-                <!-- if終了 -->
-            <?php } ?>
-        </div>
+            </form>
+            <div class="overlay" id="js-overlay"></div>
+            <div class="modal" id="js-modal">
+                <div class="modal-close__wrap">
+                    <button class="modal-close" id="js-close">
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+                <div id="img-qr" class="p-10"></div>
+            </div>
+            <button class="modal-open rounded" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">フォローしてもらう</button>
+            <!-- if終了 -->
+        <?php } ?>
+        <!-- </div> -->
     </div>
     <script src="./js/select.js"></script>
     <script src="./js/create_QR.js"></script>

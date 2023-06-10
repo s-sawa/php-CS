@@ -41,7 +41,8 @@ if ($pw) {  //trueだったらの意味
   $_SESSION["chk_ssid"]  = session_id(); //自分のセッションIDを取得する。
   $_SESSION["kanri_flg"] = $val['kanri_flg'];
   $_SESSION["name"]      = $val['name'];
-  $_SESSION["lid"]      = $val['lid'];
+  $_SESSION["lid"]       = $val['lid'];
+  $_SESSION["infoid"]    = $val2["id"];
   //Login成功時（リダイレクト）
   // redirect("index.php");
   //マイプロフィールカードの画面に遷移させる

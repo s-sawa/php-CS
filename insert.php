@@ -23,12 +23,6 @@ if (!empty($_FILES)) {
     $MSG = 'アップロード成功！ファイル名:' . $filename;
     $img_path = $uploaded_path;
   } else {
-    // $MSG = '画像を選択してください';
-    // $r = rand(1,3);
-    // switch ($r) {
-    //   case 1:
-    //     $filename ==
-    // }
     $r = rand(1, 3);
     $uploaded_path = 'images/dummy' . $r . '.jpg';
     // $uploaded_path = 'images/hachiware.jpg';
@@ -57,6 +51,7 @@ $stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
 $stmt->bindValue(':theme_color', $theme_color, PDO::PARAM_STR);
 // if (!empty($img_path)) {
 $stmt->bindValue(':img_path', $img_path, PDO::PARAM_STR);
+// $stmt->bindValue(':img_path2', $img_path2, PDO::PARAM_STR);
 // } else {
 //   $stmt->bindValue(':img_path', , PDO::PARAM_NULL);
 // }
@@ -68,5 +63,12 @@ $status = $stmt->execute();
 if ($status == false) {
   sql_error($stmt);
 } else {
-  redirect("mypage.php");
+  // redirect("my_profile.php");
+  // redirect("mypage.php");
+
+  // $_SESSION["infoid"]    = $val2["id"];
+  //Login成功時（リダイレクト）
+  // redirect("index.php");
+  //マイプロフィールカードの画面に遷移させる
+  redirect('done.php');
 }
