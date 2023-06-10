@@ -30,6 +30,8 @@ if ($status == false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>データ編集</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
     <style>
         div {
             padding: 10px;
@@ -71,6 +73,7 @@ if ($status == false) {
     </div>
     <!-- Main[End] -->
     <script src="./js/select.js"></script>
+    <script src="./js/main.js"></script>
 
 </body>
 

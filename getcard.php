@@ -1,15 +1,23 @@
+<?php
+session_start();
+include "funcs.php";
+sschk();
+?>
 <!DOCTYPE html>
 
 <head>
-    <title>QRコードのテスト</title>
+    <title>QR読みとり</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" href="./favicon/favicon.svg">
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </head>
 
 <body>
+    <header class="bg-white">
+        <?php include('header.php'); ?>
+    </header>
     <div id="wrapper">
         <video id="video" autoplay muted playsinline class=""></video>
         <canvas id="camera-canvas"></canvas>
@@ -20,10 +28,8 @@
 
     <script src="./js/jsQR.js"></script>
     <script src="./js/script.js"></script>
+    <script src="./js/main.js"></script>
     <script>
-        // function test(msg) {
-        //     alert(msg);
-        // }
         function check(msg) {
             ret = confirm(`${msg}のページに移動しますか？`)
             if (ret) {

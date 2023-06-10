@@ -13,14 +13,14 @@
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 50;
+    z-index: 10;
 }
 
 #rect-canvas{
     position: absolute;
     top: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 20;
 }
 #qr-msg {
     z-index: 999;

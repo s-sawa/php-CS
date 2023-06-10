@@ -34,7 +34,7 @@ if ($count == 1) {
     <div>
         <img class="w-16" src="./logo/logo.png" alt="">
     </div>
-    <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[40vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 ">
+    <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[20vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 z-50">
         <ul class="flex md:flex-row flex-col md:items-center  md:gap-[4vw] gap-4">
             <li>
                 <a class="hover:text-gray-500 md:text-sm" href="my_profile.php?id=<?= $data['id']; ?>">マイカード</a>
@@ -46,7 +46,7 @@ if ($count == 1) {
                 <a class="hover:text-gray-500 md:text-sm" href="profile_list.php">カードリスト</a>
             </li>
             <li>
-                <a class="hover:text-gray-500 md:text-sm" href="getcard.php">カード読み取り</a>
+                <a class="hover:text-gray-500 md:text-sm" href="getcard.php">フォローする</a>
             </li>
             <li>
                 <a class="hover:text-gray-500 md:text-sm" href="logout.php">ログアウト</a>
