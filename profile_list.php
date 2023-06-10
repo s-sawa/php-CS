@@ -76,7 +76,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                     <p><span class="font-semibold">
                                             <?php
                                             $_SESSION["list_lid"] = $info["lid"];
-                                            $list_lid = $info["lid"];
+                                            // $list_lid = $info["lid"];ƒ
                                             include("count_follow_list.php");
                                             ?>
                                         </span> Followers</p>
@@ -86,7 +86,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                     <p> <span class="font-semibold">
                                             <?php
                                             $_SESSION["list_lid"] = $info["lid"];
-                                            $list_lid = $info["lid"];
+                                            // $list_lid = $info["lid"];
                                             include("count_follower_list.php");
                                             ?>
                                             </span> Following</p>
@@ -94,14 +94,6 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                             </div>
                         </div>
                     </div>
-                    <!-- <?php
-                            $list_lid = $info["lid"];
-                            include("count_follow_list.php");
-                            ?> -->
-                    <?php
-                    $list_lid = $info["lid"];
-                    include("count_follower_list.php");
-                    ?>
                 <?php endforeach; ?>
             </div>
         </div>
