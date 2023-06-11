@@ -63,12 +63,7 @@ $status = $stmt->execute();
 if ($status == false) {
   sql_error($stmt);
 } else {
-  // redirect("my_profile.php");
-  // redirect("mypage.php");
-
-  // $_SESSION["infoid"]    = $val2["id"];
   //Login成功時（リダイレクト）
-  // redirect("index.php");
   //マイプロフィールカードの画面に遷移させる
   redirect('done.php');
 }

@@ -1,3 +1,33 @@
+#wrapper{
+    position: relative;
+}
+
+#video{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    visibility: hidden;
+}
+
+#camera-canvas{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+}
+
+#rect-canvas{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 20;
+}
+#qr-msg {
+    z-index: 999;
+}
+
+
+
 .overlay {
   position: fixed;
   width: 100%;

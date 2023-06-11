@@ -7,7 +7,7 @@ sschk();
 
 <head>
     <title>QR読みとり</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/qr.css">
     <link rel="icon" href="./favicon/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
@@ -24,14 +24,13 @@ sschk();
         <canvas id="rect-canvas"></canvas>
         <span id="qr-msg">QRコード: 見つかりません</span>
     </div>
-    <a href="http://www.google.co.jp/" onclick="check('外部のページへ移動します。よろしいですか？')">リンクをクリックして下さい。</a>
-
     <script src="./js/jsQR.js"></script>
     <script src="./js/script.js"></script>
     <script src="./js/main.js"></script>
     <script>
         function check(msg) {
-            ret = confirm(`${msg}のページに移動しますか？`)
+            ret = confirm("登録しますか？")
+            // ret = confirm(`${msg}のページに移動しますか？`)
             if (ret) {
                 location.href = msg;
             }

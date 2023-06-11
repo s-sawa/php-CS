@@ -1,10 +1,3 @@
-const navLinks = document.querySelector('.nav-links')
-function onToggleMenu(e) {
-    e.name = e.name === "menu" ? "close" : "menu";
-    navLinks.classList.toggle("top-[12%]")
-}
-
-
 //モーダルの表示と非表示
 const modal = $("#js-modal");
 const overlay = $("#js-overlay");
@@ -19,3 +12,7 @@ close.on('click', function() { //×ボタンをクリックしたら
     modal.removeClass("open"); // overlayクラスからopenクラスを外す
     overlay.removeClass("open"); // overlayクラスからopenクラスを外す
 });
+
+function deleteMsg(id) {
+    alert(id);
+}

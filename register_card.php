@@ -31,7 +31,7 @@ if ($status == false) {
     $read_lid = $_SESSION["lid"]; //誰が読み取るか
     $readed_lid = $row["lid"]; //誰のを読み取るか
     $sql2 = "INSERT INTO cards_table(read_lid,readed_lid)VALUES(:read_lid, :readed_lid);";
-    $stmt2 = $pdo->prepare($sql2);
+    $stmt2 = $pdo->prepare($sql2);;
     $stmt2->bindValue(':read_lid', $read_lid, PDO::PARAM_STR);
     $stmt2->bindValue(':readed_lid', $readed_lid, PDO::PARAM_STR);
     $status = $stmt2->execute();
@@ -42,22 +42,26 @@ if ($status == false) {
 }
 
 //1レコードだけ取得する方法
-echo "<br>";
 
-echo $row["lid"];
-echo $row["nickname"];
-echo "<br>";
+// echo $row["lid"];
+// echo $row["nickname"];
+// echo "<br>";
+// echo $read_lid;
+// echo "<br>";
+// echo $readed_lid;
 
-if ($myid == $row["lid"]) {
-    echo "自分のカード,登録するボタン表示させない";
-} else {
-    echo "自分のカードではない、登録するボタン表示する。おしたらそのカードの何らかの情報をDBに記録し、一覧表示できるようにする";
-}
 
-// redirect("mypage.php");
+// if ($myid == $row["lid"]) {
+//     echo "自分のカード,登録するボタン表示させない";
+// } else {
+//     echo "自分のカードではない、登録するボタン表示する。おしたらそのカードの何らかの情報をDBに記録し、一覧表示できるようにする";
+// }
+$_SESSION["register"] = $status;
+
+redirect("done.php");
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 
 <head>
     <meta charset="UTF-8">
@@ -66,8 +70,14 @@ if ($myid == $row["lid"]) {
     <title>Document</title>
 </head>
 <div>
+    <?php if ($status == 1 ) {?>
+        <p>aaaa</p>
+    <?php } ?>
+    
     <p id="test" class="hidden">登録完了</p>
-    <a href="./mypage.php">戻る</a>
+    <!-- <a href="./mypage.php">戻る</a> -->
+    <a href="done.php">戻る</a>
+    
 </div>
 
 <body>

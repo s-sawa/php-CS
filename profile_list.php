@@ -36,12 +36,12 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
     </style>
 </head>
 
-<body class="bg-slate-400">
+<body class="bg-neutral-50">
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
     <div class="box-border flex mx-auto justify-center">
-        <div class="bg-gray-200 ">
+        <div class=" ">
             <?php if (count($infos) == 0) { ?>
                 <p>まだ誰のカードも登録されてないよ</p>
             <?php } ?>
@@ -76,7 +76,6 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                     <p><span class="font-semibold">
                                             <?php
                                             $_SESSION["list_lid"] = $info["lid"];
-                                            // $list_lid = $info["lid"];ƒ
                                             include("count_follow_list.php");
                                             ?>
                                         </span> Followers</p>
@@ -86,14 +85,14 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                     <p> <span class="font-semibold">
                                             <?php
                                             $_SESSION["list_lid"] = $info["lid"];
-                                            // $list_lid = $info["lid"];
                                             include("count_follower_list.php");
                                             ?>
-                                            </span> Following</p>
+                                        </span> Following</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 <?php endforeach; ?>
             </div>
         </div>

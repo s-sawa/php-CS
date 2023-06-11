@@ -53,16 +53,15 @@ if ($status == false) {
     <div class="container bg-neutral-50 h-screen  justify-center mx-auto ">
         <!-- <div> -->
         <?php if (empty($mydata[0])) { ?>
-            <!-- echo "プロフィール登録してね"; -->
-            <p>まだプロフィールが登録されていません。</p>
-            <div class="bg-lime-300 text-center py-5"><a href="input.php">プロフィールを入力する</a></div>
+            <div class="text-center">
+                <p class="mt-4 mb-10 text-lg pt-2">プロフィールが登録されていません</p>
+                <a href="input.php" class=" bg-emerald-600 hover:bg-emerald-800 text-white font-bold p-5  rounded-full focus:outline-none focus:shadow-outline">プロフィールを登録する</a>
+            </div>
         <?php } else { ?>
-            <!-- <form method="post" action="insert.php" enctype="multipart/form-data"></form> -->
             <div class="box-border flex mx-auto justify-center max-w-lg">
                 <div class="">
                     <div class="">
                         <div class="w-[95%] sm:w-[70%] md:w-[80%]  my-2 bg-white shadow-lg transform duration-200 easy-in-out mx-auto bg-[<?= $mydata["theme_color"] ?>] ">
-                            <!-- <div class="sm:w-full  my-2 bg-white  shadow-lg  transform   duration-200 easy-in-out"> -->
                             <div class=" h-32 overflow-hidden">
                                 <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
                             </div>
@@ -73,8 +72,6 @@ if ($status == false) {
                                 <div class="text-center px-2">
                                     <span class="text-sm inline-block mt-2 ">ニックネーム</span><br>
                                     <span class="ff inline-block font-bold text-3xl bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= $mydata["nickname"] ?></span><br>
-                                    <!-- <a class="text-gray-400 mt-2 hover:text-blue-500" href="https://www.instagram.com/immohitdhiman/" target="BLANK()">@immohitdhiman</a> -->
-                                    <!-- <p class="mt-2 text-gray-700 text-sm ff font-bold bg-slate-50 pr-2 pl-2 rounded-sm ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </p> -->
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 px-2 rounded-sm text-gray-700"><?= $mydata["zodiac"] ?></span><br>
                                     <span>血液型は</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["blood_type"] ?>型</span><span>だよ</span><br>
                                     <span>属性</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["type"] ?></span><span></span><br>
@@ -102,6 +99,7 @@ if ($status == false) {
                     </div>
                 </div>
             </div>
+            <!-- QR表示用モーダル -->
             <div class="overlay" id="js-overlay"></div>
             <div class="modal" id="js-modal">
                 <div class="modal-close__wrap">
@@ -112,16 +110,24 @@ if ($status == false) {
                 </div>
                 <div id="img-qr" class="p-10"></div>
             </div>
+            <!-- フォローしてもらうボタン -->
             <div class="w-full flex justify-center">
-                <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick="createQR('<?= $mydata["id"] ?>')">フォローしてもらう</button>
+                <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick='createQR(<?= $mydata["id"] ?>)'>フォローしてもらう</button>
             </div>
+            <div class="w-full flex justify-center">
+                <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
+                <!-- <a href="delete.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3">削除</a> -->
+            </div>
+            <!-- ログアウトメッセージ用モーダル -->
+            <div id="modal2">aaaa</div>
             <!-- if終了 -->
         <?php } ?>
     </div>
     <script src="./js/select.js"></script>
     <script src="./js/create_QR.js"></script>
     <script src="./js/main.js"></script>
-
+    <script>
+    </script>
 </body>
 
 </html>

@@ -37,12 +37,15 @@ if ($count == 1) {
     </div>
     <div class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[30vh] left-0 top-[-100%] md:w-auto w-full flex items-center px-5 z-50">
         <ul class="flex md:flex-row flex-col md:items-center  md:gap-[4vw] gap-4">
+            <!-- <?php if (!empty($mydata[0])) { ?> -->
             <li>
-                <a class="hover:text-gray-500 md:text-sm font-bold" href="my_profile.php?id=<?= $data['id']; ?>">マイカード</a>
+                <a class="hover:text-gray-500 md:text-sm font-bold" href="my_profile.php">マイカード</a>
+                <!-- <a class="hover:text-gray-500 md:text-sm font-bold" href="my_profile.php?id=<?= $data['id']; ?>">マイカード</a> -->
             </li>
             <li>
                 <a class="hover:text-gray-500 md:text-sm font-bold" href="u_view.php?id=<?= $data['id']; ?>">カード編集</a>
             </li>
+            <!-- <?php } ?> -->
             <li>
                 <a class="hover:text-gray-500 md:text-sm font-bold" href="profile_list.php">カードリスト</a>
             </li>
@@ -67,8 +70,7 @@ if ($count == 1) {
 
     function onToggleMenu(e) {
         e.name = e.name === "menu" ? "close" : "menu";
-        navLinks.classList.toggle("top-[90px]")
-        // navLinks.classList.toggle("top-[7%]")
+        navLinks.classList.toggle("top-[7%]")
     }
 
     function logoutMsg() {
