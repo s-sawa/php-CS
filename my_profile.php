@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "funcs.php";
+require_once 'funcs.php';
 sschk();
 // error_reporting(0);
 
@@ -9,7 +9,6 @@ $id = $_GET["id"];
 // $readed_lid = $_SESSION["lid"];
 // $name =  $_SESSION["name"];
 // echo $id;
-require_once 'funcs.php';
 /** @var PDO $pdo */
 $pdo = db_conn();
 $sql = "SELECT * FROM users_info WHERE id = :id";
@@ -33,6 +32,7 @@ if ($status == false) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイカード</title>
+    <link rel="icon" href="./favicon/favicon.svg">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -50,7 +50,7 @@ if ($status == false) {
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
-    <div class="container bg-neutral-50 h-screen  justify-center mx-auto ">
+    <div class="container bg-neutral-50 justify-center mx-auto pb-20 min-h-[100vh] ">
         <!-- <div> -->
         <?php if (empty($mydata[0])) { ?>
             <div class="text-center">
@@ -63,26 +63,27 @@ if ($status == false) {
                     <div class="">
                         <div class="w-[95%] sm:w-[70%] md:w-[80%]  my-2 bg-white shadow-lg transform duration-200 easy-in-out mx-auto bg-[<?= $mydata["theme_color"] ?>] ">
                             <div class=" h-32 overflow-hidden">
-                                <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" />
+                                <img class="w-full" src="./images/gs1.png" alt="" />
+                                <!-- <img class="w-full" src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2000&q=80" alt="" /> -->
                             </div>
                             <div class="flex justify-center px-5  -mt-12">
-                                <img class="h-32 w-32 object-cover bg-white p-2 rounded-full " src="<?= $mydata["img_path"] ?>" alt="" />
+                                <img class="h-32 w-32 object-cover bg-white p-2 rounded-full mb-2 " src="<?= $mydata["img_path"] ?>" alt="" />
                             </div>
                             <div class=" ">
                                 <div class="text-center px-2">
-                                    <span class="text-sm inline-block mt-2 ">ニックネーム</span><br>
-                                    <span class="ff inline-block font-bold text-3xl bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= $mydata["nickname"] ?></span><br>
-                                    <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 px-2 rounded-sm text-gray-700"><?= $mydata["zodiac"] ?></span><br>
-                                    <span>血液型は</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["blood_type"] ?>型</span><span>だよ</span><br>
-                                    <span>属性</span><span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["type"] ?></span><span></span><br>
-                                    <p class="text-sm mt-2">私の趣味 / 好きなこと</p>
+                                    <span class="text-sm inline-block ">ニックネーム</span><br>
+                                    <span class="ff inline-block font-bold text-3xl bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= h($mydata["nickname"]) ?></span><br>
+                                    <span class="ff inline-block font-bold bg-slate-50 px-2 rounded text-gray-700 mb-2"><?= $mydata["birthmonth"] ?>月</span><span>生まれの</span><span class="ff font-bold bg-slate-50 px-2 rounded-sm text-gray-700"><?= $mydata["zodiac"] ?></span><br>
+                                    <span>血液型は</span><span class="ff inline-block font-bold bg-slate-50 px-2 rounded mb-2 text-gray-700"><?= $mydata["blood_type"] ?>型</span><span>だよ</span><br>
+                                    <span>属性</span><span class="ff inline-block font-bold bg-slate-50 px-2 rounded mb-2 text-gray-700"><?= $mydata["type"] ?></span><span></span><br>
+                                    <p class="text-sm">私の趣味 / 好きなこと</p>
                                     <div class="">
-                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $mydata["favo1"] ?></span><br>
-                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $mydata["favo2"] ?></span><br>
-                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= $mydata["favo3"] ?></span><br>
+                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($mydata["favo1"]) ?></span><br>
+                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($mydata["favo2"]) ?></span><br>
+                                        <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($mydata["favo3"]) ?></span><br>
                                     </div>
                                     <p class="text-sm inline-block mt-2">ひとこと</p><br>
-                                    <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= $mydata["comment"] ?></span><br>
+                                    <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= h($mydata["comment"]) ?></span><br>
                                 </div>
                                 <hr class="mt-6" />
                                 <div class="flex  bg-gray-50 ">
@@ -116,18 +117,17 @@ if ($status == false) {
             </div>
             <div class="w-full flex justify-center">
                 <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
-                <!-- <a href="delete.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3">削除</a> -->
             </div>
             <!-- ログアウトメッセージ用モーダル -->
-            <div id="modal2">aaaa</div>
             <!-- if終了 -->
         <?php } ?>
     </div>
+    <footer class="bg-gray-100">
+        <?php include("footer.php") ?>
+    </footer>
     <script src="./js/select.js"></script>
     <script src="./js/create_QR.js"></script>
     <script src="./js/main.js"></script>
-    <script>
-    </script>
 </body>
 
 </html>

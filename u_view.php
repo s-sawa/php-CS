@@ -28,7 +28,8 @@ if ($status == false) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>データ編集</title>
+    <title>プロフィール編集</title>
+    <link rel="icon" href="./favicon/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -40,9 +41,9 @@ if ($status == false) {
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
-    <div">
+    <div>
         <form method="post" action="update.php" enctype="multipart/form-data">
-            <div>
+            <div class="min-h-[100vh]">
                 <form method="post" action="insert.php" enctype="multipart/form-data">
                     <div class="max-w-sm mx-auto my-10  rounded shadow-md p-5 bg-lime-200">
                         <fieldset>
@@ -187,36 +188,35 @@ if ($status == false) {
                 </form>
             </div>
         </form>
-    </div>
-    <!-- Main[End] -->
-    <!-- <script src="./js/select.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-    <script>
-        //---------------------------------------------------
-        //画像サムネイル表示
-        //---------------------------------------------------
-        // アップロードするファイルを選択
-        $('input[type=file]').change(function() {
-            //選択したファイルを取得し、file変数に格納
-            var file = $(this).prop('files')[0];
-            // 画像以外は処理を停止
-            if (!file.type.match('image.*')) {
-                // クリア
-                $(this).val(''); //選択されてるファイルを空にする
-                $('.cms-thumb > img').html(''); //画像表示箇所を空にする
-                return;
-            }
-            // 画像表示
-            var reader = new FileReader(); //1
-            reader.onload = function() { //2
-                $('.cms-thumb > img').attr('src', reader.result);
-            }
-            reader.readAsDataURL(file); //3
-        });
-    </script>
-    <!-- Main[End] -->
-    <!-- <script src="./js/select.js"></script> -->
-    <script src="./js/main.js"></script>
+        </div>
+        <footer class="bg-gray-100">
+            <?php include("footer.php") ?>
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+        <script>
+            //---------------------------------------------------
+            //画像サムネイル表示
+            //---------------------------------------------------
+            // アップロードするファイルを選択
+            $('input[type=file]').change(function() {
+                //選択したファイルを取得し、file変数に格納
+                var file = $(this).prop('files')[0];
+                // 画像以外は処理を停止
+                if (!file.type.match('image.*')) {
+                    // クリア
+                    $(this).val(''); //選択されてるファイルを空にする
+                    $('.cms-thumb > img').html(''); //画像表示箇所を空にする
+                    return;
+                }
+                // 画像表示
+                var reader = new FileReader(); //1
+                reader.onload = function() { //2
+                    $('.cms-thumb > img').attr('src', reader.result);
+                }
+                reader.readAsDataURL(file); //3
+            });
+        </script>
+        <script src="./js/main.js"></script>
 
 </body>
 

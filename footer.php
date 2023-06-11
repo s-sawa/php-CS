@@ -1,0 +1,1 @@
+        <p class="p-2 text-center text-xs">Copyright © 2023 Connect Profile. All Rights Reserved.</p>

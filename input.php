@@ -10,7 +10,7 @@ session_start();
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>プロフィール入力</title>
-  <!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+  <link rel="icon" href="./favicon/favicon.svg">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -19,7 +19,7 @@ session_start();
 </head>
 
 <body>
-  <div class="">
+  <div class="min-h-[100vh]">
     <form method="post" action="insert.php" enctype="multipart/form-data">
       <div class="max-w-sm mx-auto my-10  rounded shadow-md p-5 bg-lime-200">
         <fieldset>
@@ -57,7 +57,9 @@ session_start();
       </div>
     </form>
   </div>
-  <!-- Main[End] -->
+  <footer class="bg-gray-100">
+    <?php include("footer.php") ?>
+  </footer>
   <script src="./js/select.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
   <script>
