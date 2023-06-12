@@ -3,7 +3,7 @@ session_start();
 require_once 'funcs.php';
 if (!empty($_GET["word"])) {
     $word = $_GET["word"];
-    echo $word;
+    // echo $word;
 }
 $read_lid =  $_SESSION["lid"];
 /** @var PDO $pdo */
@@ -36,8 +36,10 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./favicon/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <title>カードリスト</title>
     <link rel="icon" href="./favicon/favicon.svg">
     <style>
@@ -78,11 +80,11 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                     <!-- <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo1"]) ?></span><br>
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo2"]) ?></span><br>
                                     <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo3"]) ?></span><br> -->
-                                    <a href="profile_list.php?word=<?= h($info["favo1"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo1"]) ?></a><br>
-                                    <a href="profile_list.php?word=<?= h($info["favo2"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo2"]) ?></a><br>
+                                    <a href="profile_list.php?word=<?= h($info["favo1"]) ?>" class="ff font-bold bg-sky-50 px-2 rounded text-blue-700 inline-block mt-1">#<?= h($info["favo1"]) ?></a><br>
+                                    <a href="profile_list.php?word=<?= h($info["favo2"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-blue-700 inline-block mt-1">#<?= h($info["favo2"]) ?></a><br>
                                     <!-- <a href="profile_list.php?word=<?= h($info["favo3"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo3"]) ?></a><br> -->
-                                    <p onclick='ajax("<?= $info["favo1"] ?>")'>aaa</p>
-                                    <a href="profile_list.php?word=<?= h($info["favo3"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($info["favo3"]) ?></a><br>
+                                    <!-- <p onclick='ajax("<?= $info["favo1"] ?>")'><?= $info["favo1"] ?></p> -->
+                                    <a href="profile_list.php?word=<?= h($info["favo3"]) ?>" class="ff font-bold bg-slate-50 px-2 rounded text-blue-700 inline-block mt-1">#<?= h($info["favo3"]) ?></a><br>
                                 </div>
                                 <p class="text-sm inline-block mt-2">ひとこと</p><br>
                                 <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= h($info["comment"]) ?></span><br>
@@ -95,7 +97,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                             $_SESSION["list_lid"] = $info["lid"];
                                             include("count_follow_list.php");
                                             ?>
-                                        </span> Followers</p>
+                                        </span> フォロー</p>
                                 </div>
                                 <div class="border"></div>
                                 <div class="text-center w-1/2 p-4 hover:bg-gray-100 cursor-pointer">
@@ -104,13 +106,12 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                                             $_SESSION["list_lid"] = $info["lid"];
                                             include("count_follower_list.php");
                                             ?>
-                                        </span> Following</p>
+                                        </span> フォロワー</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <?php endforeach; ?>
-
             </div>
         </div>
     </div>
@@ -123,13 +124,18 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
         console.log(json)
 
         function ajax(id) {
+            // console.log(id)
             $.ajax({
-                type : "POST",
-                url : "select2.php",
-                data : { "word" : id },
-                dataType : "json"
-            })
-
+                    type: "POST",
+                    url: "select2.php",
+                    data: {
+                        "word": id
+                    },
+                    dataType: "json"
+                })
+                .done(function(data) {
+                    console.log(data)
+                })
         }
     </script>
 </body>

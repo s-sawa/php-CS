@@ -10,14 +10,20 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
+    .ff {
+      font-family: 'Hannotate TC', sans-serif;
+    }
   </style>
 </head>
 
 <body>
   <div>
+
     <div class="w-full max-w-xs mx-auto flex items-center h-screen  justify-center">
-      <form class="bg-lime-200 shadow-md rounded px-8 " name="form1" action="login_act.php" method="post">
+      <form class="bg-lime-200 shadow-md rounded px-8 py-2" name="form1" action="login_act.php" method="post">
         <div class="mb-4">
+          <h1 class="ff text-center text-2xl font-bold mt-5  rounded py-1 bg-gradient-to-r from-lime-400 to-green-500">Connect Card</h1>
+
           <label class="block text-gray-700 text-sm font-bold mb-2 mt-4" for="username">
             ID
           </label>

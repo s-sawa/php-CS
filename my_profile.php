@@ -50,7 +50,7 @@ if ($status == false) {
     <header class="bg-white">
         <?php include('header.php'); ?>
     </header>
-    <div class="container bg-neutral-50 justify-center mx-auto pb-20 min-h-[100vh] ">
+    <div class="container bg-neutral-50 justify-center mx-auto pb-20 min-h-[100vh]  relative">
         <!-- <div> -->
         <?php if (empty($mydata[0])) { ?>
             <div class="text-center">
@@ -109,14 +109,14 @@ if ($status == false) {
                         <span></span>
                     </button>
                 </div>
-                <div id="img-qr" class="p-10"></div>
+                <div id="img-qr" class="p-2  bg-neutral-100 text-center"></div>
             </div>
             <!-- フォローしてもらうボタン -->
             <div class="w-full flex justify-center">
                 <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick='createQR(<?= $mydata["id"] ?>)'>フォローしてもらう</button>
             </div>
             <div class="w-full flex justify-center">
-                <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
+                <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 absolute bottom-0 left-auto" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
             </div>
             <!-- ログアウトメッセージ用モーダル -->
             <!-- if終了 -->

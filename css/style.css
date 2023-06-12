@@ -37,8 +37,8 @@
 
 .modal-close__wrap {
   position: absolute;
-  right: 40px;
-  top: 20px;
+  right: 10px;
+  top: 10px;
 }
 
 .modal-close {
