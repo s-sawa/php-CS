@@ -30,6 +30,9 @@ if ($status == false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>プロフィール編集</title>
     <link rel="icon" href="./favicon/favicon.svg">
+    <link rel="stylesheet" href="./css/modal.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="./js/main.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
@@ -168,7 +171,7 @@ if ($status == false) {
                             <label class="block mb-2 texr-gray-900"><input type="text" name="comment" required placeholder="Lalavelさいこー。" value="<?= $mydata["comment"] ?>" class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
                             <div class="flex items-center mb-2">
                                 <span>カードテーマ色</span>
-                                <input type="color" value="<?= $mydata["theme_color"] ?>" name="theme_color" class="cursor-pointer w-[30%] h-10" />
+                                <input id="color" type="color" value="<?= $mydata["theme_color"] ?>" name="theme_color" class="cursor-pointer w-[30%] h-10" />
                             </div>
                             <p>プロフィール画像（後からでもOK)</p>
                             <p class="cms-thumb"><img class="shadow w-32 h-32 object-cover rounded-full mx-auto my-2" src="./images/thumbnail.png" width="200"></p>
@@ -188,35 +191,35 @@ if ($status == false) {
                 </form>
             </div>
         </form>
-        </div>
-        <footer class="bg-gray-100">
-            <?php include("footer.php") ?>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-        <script>
-            //---------------------------------------------------
-            //画像サムネイル表示
-            //---------------------------------------------------
-            // アップロードするファイルを選択
-            $('input[type=file]').change(function() {
-                //選択したファイルを取得し、file変数に格納
-                var file = $(this).prop('files')[0];
-                // 画像以外は処理を停止
-                if (!file.type.match('image.*')) {
-                    // クリア
-                    $(this).val(''); //選択されてるファイルを空にする
-                    $('.cms-thumb > img').html(''); //画像表示箇所を空にする
-                    return;
-                }
-                // 画像表示
-                var reader = new FileReader(); //1
-                reader.onload = function() { //2
-                    $('.cms-thumb > img').attr('src', reader.result);
-                }
-                reader.readAsDataURL(file); //3
-            });
-        </script>
-        <script src="./js/main.js"></script>
+        <!-- ログアウト確認モーダル -->
+        <?php include("logout_modal.php") ?>
+    </div>
+    <footer class="bg-gray-100">
+        <?php include("footer.php") ?>
+    </footer>
+    <script>
+        //---------------------------------------------------
+        //画像サムネイル表示
+        //---------------------------------------------------
+        // アップロードするファイルを選択
+        $('input[type=file]').change(function() {
+            //選択したファイルを取得し、file変数に格納
+            var file = $(this).prop('files')[0];
+            // 画像以外は処理を停止
+            if (!file.type.match('image.*')) {
+                // クリア
+                $(this).val(''); //選択されてるファイルを空にする
+                $('.cms-thumb > img').html(''); //画像表示箇所を空にする
+                return;
+            }
+            // 画像表示
+            var reader = new FileReader(); //1
+            reader.onload = function() { //2
+                $('.cms-thumb > img').attr('src', reader.result);
+            }
+            reader.readAsDataURL(file); //3
+        });
+    </script>
 
 </body>
 

@@ -1,0 +1,167 @@
+/*モーダル本体の指定 + モーダル外側の背景の指定*/
+/* QR用 */
+.modal-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(0,0,0,50%);
+	padding: 20px 10px;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+    box-sizing: border-box;
+}
+/*モーダル本体の擬似要素の指定*/
+.modal-container:before{
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-container.active{
+	opacity: 1;
+	visibility: visible;
+}
+/*モーダル枠の指定*/
+.modal-body{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 500px;
+	width: 90%;
+}
+/*モーダルを閉じるボタンの指定*/
+.modal-close{
+	position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -40px;
+	right: -25px;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+/*モーダル内のコンテンツの指定*/
+.modal-content{
+	background: #fff;
+	text-align: left;
+	padding: 30px;
+}
+/* ログアウト確認用 */
+.modal-logout-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(0,0,0,50%);
+	padding: 10px 10px;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+    box-sizing: border-box;
+}
+/*モーダル本体の擬似要素の指定*/
+.modal-logout-container:before{
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-logout-container.active{
+	opacity: 1;
+	visibility: visible;
+}
+/*モーダル枠の指定*/
+.modal-logout-body{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 500px;
+	width: 90%;
+}
+/*モーダルを閉じるボタンの指定*/
+.modal-logout-close{
+	position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -30px;
+	right: -25px;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+/*モーダル内のコンテンツの指定*/
+.modal-logout-content{
+	background: #fff;
+	text-align: left;
+	padding: 20px
+}
+
+/* 削除モーダル用 */
+.modal-delete-container{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background: rgba(0,0,0,50%);
+	padding: 10px 10px;
+	overflow: auto;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s;
+    box-sizing: border-box;
+}
+/*モーダル本体の擬似要素の指定*/
+.modal-delete-container:before{
+	content: "";
+	display: inline-block;
+	vertical-align: middle;
+	height: 100%;
+}
+/*モーダル本体に「active」クラス付与した時のスタイル*/
+.modal-delete-container.active{
+	opacity: 1;
+	visibility: visible;
+}
+/*モーダル枠の指定*/
+.modal-delete-body{
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	max-width: 500px;
+	width: 90%;
+}
+/*モーダルを閉じるボタンの指定*/
+.modal-delete-close{
+	position: absolute;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+	top: -30px;
+	right: -25px;
+	width: 40px;
+	height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+/*モーダル内のコンテンツの指定*/
+.modal-delete-content{
+	background: #fff;
+	text-align: left;
+	padding: 20px
+}

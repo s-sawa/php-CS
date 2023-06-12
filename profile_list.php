@@ -37,9 +37,12 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon/favicon.svg">
+    <link rel="stylesheet" href="./css/modal.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="./js/main.js"></script>
+
     <title>カードリスト</title>
     <link rel="icon" href="./favicon/favicon.svg">
     <style>
@@ -114,11 +117,12 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                 <?php endforeach; ?>
             </div>
         </div>
+        <!-- ログアウト確認モーダル -->
+        <?php include("logout_modal.php") ?>
     </div>
     <footer class="bg-gray-100">
         <?php include("footer.php") ?>
     </footer>
-    <script src="./js/main.js"></script>
     <script>
         const json = JSON.parse('<?= $json ?>');
         console.log(json)

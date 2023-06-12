@@ -13,9 +13,11 @@ sschk();
     <title>QR読み取り</title>
     <link rel="icon" href="./favicon/favicon.svg">
     <link rel="stylesheet" href="./css/qr.css">
+    <link rel="stylesheet" href="./css/modal.css">
     <link rel="icon" href="./favicon/favicon.svg">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="./js/main.js"></script>
 </head>
 
 <body class="bg-neutral-50 h-screen">
@@ -28,9 +30,14 @@ sschk();
         <canvas id="rect-canvas"></canvas>
         <span id="qr-msg">QRコード: 見つかりません</span>
     </div>
+    <!-- スマホ用 -->
+    <input id="upload" type="file" name="image" accept="image/*">
+    <!-- <input id="upload" type="file" name="image" accept="image/*" capture="camera"> -->
+    <!-- ログアウト確認モーダル -->
+    <?php include("logout_modal.php") ?>
+
     <script src="./js/jsQR.js"></script>
     <script src="./js/script.js"></script>
-    <script src="./js/main.js"></script>
     <script>
         function check(msg) {
             ret = confirm("登録しますか？")
@@ -40,6 +47,9 @@ sschk();
             }
         }
     </script>
+    <button><a href="./iphonecamera.php" class=" bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline">iphone</a></button>
+
+    <!-- <a class="bottom-0" href="iphonecamera.php">iphone</a> -->
 </body>
 
 </html>

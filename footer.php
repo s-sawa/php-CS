@@ -1,1 +1,1 @@
-        <p class="p-2 text-center text-xs">Copyright © 2023 Connect Card. All Rights Reserved.</p>
+<p class="p-2 text-center text-xs">Copyright © 2023 Connect Card. All Rights Reserved.</p>

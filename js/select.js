@@ -19,8 +19,8 @@ for (let i = 0; i < 4; i++) {
   document.getElementById("blood-type").appendChild(option);
 }
 let typeArry = [];
-typeArry[0] = "ボケ";
-typeArry[1] = "ツッコミ";
+typeArry[0] = "ボケるほうが好きかなあ";
+typeArry[1] = "ツッコミの方が好きかなあ";
 typeArry[2] = "ボケツッコミ両方いけるよ";
 typeArry[3] = "ボケかツッコミか分からない";
 for (let i = 0; i < 4; i++) {
