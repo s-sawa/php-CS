@@ -1,6 +1,8 @@
 <?php
 session_start();
 // $id = $_GET["id"];
+include "funcs.php";
+sschk();
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -33,9 +35,9 @@ session_start();
           <span>どちらかといえば...</span>
           <label class="inline-block mb-2 texr-gray-900"><select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-1.5" name="type" id="type"></select></label>
           <p>趣味 / 好きなこと3選</p>
-          <label class="block mb-2 texr-gray-900"><input type="text" name="favo1" required placeholder="ラーメン" class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
-          <label class="block mb-2 texr-gray-900"><input type="text" name="favo2" required placeholder="カレーライス" class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
-          <label class="block mb-2 texr-gray-900"><input type="text" name="favo3" required placeholder="山登り" class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
+          <label class="block mb-2 texr-gray-900"><input type="text" name="favo1" required  class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
+          <label class="block mb-2 texr-gray-900"><input type="text" name="favo2" required  class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
+          <label class="block mb-2 texr-gray-900"><input type="text" name="favo3" required  class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
           <p>ひとことメッセージ</p>
           <label class="block mb-2 texr-gray-900"><input type="text" name="comment" required placeholder="Lalavelさいこー。" class="rounded-lg outline-none border-b-2 p-1 w-5/6"></label>
           <div class="flex items-center mb-2">

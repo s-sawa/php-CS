@@ -32,7 +32,6 @@ sschk();
     </div>
     <!-- スマホ用 -->
     <input id="upload" type="file" name="image" accept="image/*">
-    <!-- <input id="upload" type="file" name="image" accept="image/*" capture="camera"> -->
     <!-- ログアウト確認モーダル -->
     <?php include("logout_modal.php") ?>
 
@@ -47,9 +46,6 @@ sschk();
             }
         }
     </script>
-    <button><a href="./iphonecamera.php" class=" bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline">iphone</a></button>
-
-    <!-- <a class="bottom-0" href="iphonecamera.php">iphone</a> -->
 </body>
 
 </html>

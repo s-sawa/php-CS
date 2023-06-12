@@ -132,7 +132,6 @@ if ($status == false) {
                                                         } ?>>射手座</option>
                                 </select></label><br>
                             <span>血液型</span>
-                            <!-- <label class="block mb-2 texr-gray-900"><select name="blood_type" id="blood-type"> -->
                             <label class="inline-block mb-2 texr-gray-900"><select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-1.5 pr-4" name="blood_type" id="blood-type">
                                     <option value="A" <?php if ($mydata["blood_type"] == "A") {
                                                             echo "selected";
@@ -175,7 +174,6 @@ if ($status == false) {
                             </div>
                             <p>プロフィール画像（後からでもOK)</p>
                             <p class="cms-thumb"><img class="shadow w-32 h-32 object-cover rounded-full mx-auto my-2" src="./images/thumbnail.png" width="200"></p>
-                            <!-- <input type="file" name="upload_image" multiple><br> -->
                             <input type="file" name="upload_image" multiple class="block w-full text-sm text-slate-500
                             file:mr-4 file:py-2 file:px-4
                             file:rounded-lg file:border-0
@@ -191,9 +189,12 @@ if ($status == false) {
                 </form>
             </div>
         </form>
+        <!-- 削除確認モーダル -->
+        <?php include("delete_modal.php") ?>
         <!-- ログアウト確認モーダル -->
         <?php include("logout_modal.php") ?>
     </div>
+    <div id="aaaa"></div>
     <footer class="bg-gray-100">
         <?php include("footer.php") ?>
     </footer>
@@ -218,6 +219,15 @@ if ($status == false) {
                 $('.cms-thumb > img').attr('src', reader.result);
             }
             reader.readAsDataURL(file); //3
+        });
+
+        const colorpicker = document.getElementById('color');
+        // 次に、ピンの要素をarrowiconという変数に入れる
+        // const arrowicon = document.getElementById('arrow-icon');
+        colorpicker.addEventListener('input', function(e) { // カラーピッカーの入力値(inputの値)が変更されたら{}内の処理を実行する
+            // alert(e.target.value);// アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
+            // arrowicon.style.color = e.target.value; // アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
+            $("#aaaa").html(e.target.value)
         });
     </script>
 

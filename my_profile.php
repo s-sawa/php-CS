@@ -88,7 +88,7 @@ if ($status == false) {
                                         <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1">#<?= h($mydata["favo3"]) ?></span><br>
                                     </div>
                                     <p class="text-sm inline-block mt-2">ひとこと</p><br>
-                                    <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700"><?= h($mydata["comment"]) ?></span><br>
+                                    <span class="ff font-bold bg-slate-50 px-2 rounded text-gray-700 inline-block mt-1"><?= h($mydata["comment"]) ?></span><br>
                                 </div>
                                 <hr class="mt-6" />
                                 <div class="flex  bg-gray-50 ">
@@ -118,32 +118,12 @@ if ($status == false) {
                 </div>
             </div>
             <!-- 削除確認モーダル -->
-            <div class="modal-delete-container">
-                <div class="modal-delete-body w-auto">
-                    <!-- 閉じるボタン -->
-                    <div class="modal-delete-close">×</div>
-                    <!-- モーダル内のコンテンツ -->
-                    <div class="modal-delete-content rounded bg-red-50 w-auto">
-                        <!-- <p class="msg text-sm text-center mb-2">ログアウトしますか？</p> -->
-                        <div class="text-center">
-                            <i class="fa fa-exclamation-circle fa-5x text-red-400"></i>
-                        </div>
-                        <div class="flex flex-col">
-                            <a id="delete-account" href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 text-center">プロフィール削除</a>
-                            <a id="delete-profile" href="logout.php" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 text-center">アカウント削除</a>
-                            <p class="inline bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 text-center">キャンセル</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php include("delete_modal.php") ?>
             <!-- ログアウト確認モーダル -->
             <?php include("logout_modal.php") ?>
             <!-- フォローしてもらうボタン -->
             <div class="w-full flex justify-center">
                 <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick='createQR(<?= $mydata["id"] ?>)'>フォローしてもらう</button>
-                <button><a href="./iphonecamera.php" class=" bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline">iphone</a></button>
-
             </div>
             <div class="w-full flex justify-center">
                 <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 absolute bottom-0 left-auto" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
@@ -154,9 +134,6 @@ if ($status == false) {
     <footer class="bg-gray-100">
         <?php include("footer.php") ?>
     </footer>
-    <!-- <script src="./js/select.js"></script>
-    <script src="./js/create_QR.js"></script>
-    <script src="./js/main.js"></script> -->
 </body>
 
 </html>

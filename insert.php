@@ -64,6 +64,5 @@ if ($status == false) {
   sql_error($stmt);
 } else {
   //Login成功時（リダイレクト）
-  //マイプロフィールカードの画面に遷移させる
   redirect('done.php');
 }

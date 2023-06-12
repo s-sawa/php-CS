@@ -60,7 +60,7 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
 
         <div class="min-h-[100vh]">
             <?php if (count($infos) == 0) { ?>
-                <p>まだ誰のカードも登録されてないよ</p>
+                <p class="mt-4 mb-10 text-lg pt-2">登録カード：なし</p>
             <?php } ?>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
                 <?php foreach ($infos as $info) : ?>
@@ -117,6 +117,8 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
                 <?php endforeach; ?>
             </div>
         </div>
+        <!-- 削除確認モーダル -->
+        <?php include("delete_modal.php") ?>
         <!-- ログアウト確認モーダル -->
         <?php include("logout_modal.php") ?>
     </div>

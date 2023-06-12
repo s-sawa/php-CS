@@ -44,7 +44,6 @@ if ($pw) {  //trueだったらの意味
   $_SESSION["lid"]       = $val['lid'];
   $_SESSION["infoid"]    = $val2["id"];
   //Login成功時（リダイレクト）
-  // redirect("index.php");
   //マイプロフィールカードの画面に遷移させる
   redirect('my_profile.php?id='.$val2["id"]);
   // redirect("mypage.php");

@@ -31,3 +31,4 @@ $stmt4->bindValue(':lid', $lid, PDO::PARAM_STR);
 $status4 = $stmt4->execute();
 
 $pdo->commit();
+redirect("logout.php");

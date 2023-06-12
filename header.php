@@ -28,8 +28,6 @@ if ($count == 1) {
     }
 }
 
-// var_dump($data);
-// $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
 ?>
 <nav class="flex justify-between items-center w-[98%] mx-auto py-2 align-middle ">
     <div>
