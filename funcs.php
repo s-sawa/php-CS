@@ -6,7 +6,6 @@ function h($str)
 {
     return htmlspecialchars($str, ENT_QUOTES);
 }
-
 //DBConnection
 // 戻り値の型指定。intelephenseでエラー表示されるため。
 /**
@@ -20,8 +19,7 @@ function db_conn()
         $db_pw   = "";          //パスワード：XAMPPはパスワード無し or MAMPはパスワード”root”に修正してください。
         $db_host = "localhost"; //DBホスト
         return new PDO('mysql:dbname=' . $db_name . ';charset=utf8;host=' . $db_host, $db_id, $db_pw);
-        // $pdo = new PDO('mysql:dbname=swshgeek_connect-card;charset=utf8;host=mysql57.swshgeek.sakura.ne.jp', 'swshgeek', 'gssawa1234');
-        // return $pdo;
+        
     } catch (PDOException $e) {
         exit('DB Connection Error:' . $e->getMessage());
     }

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'funcs.php';
+sschk();
 if (!empty($_GET["word"])) {
     $word = $_GET["word"];
     // echo $word;
@@ -126,23 +127,24 @@ $json = json_encode($infos, JSON_UNESCAPED_UNICODE);
         <?php include("footer.php") ?>
     </footer>
     <script>
-        const json = JSON.parse('<?= $json ?>');
-        console.log(json)
+        // ajax練習
+        // const json = JSON.parse('<?= $json ?>');
+        // console.log(json)
 
-        function ajax(id) {
-            // console.log(id)
-            $.ajax({
-                    type: "POST",
-                    url: "select2.php",
-                    data: {
-                        "word": id
-                    },
-                    dataType: "json"
-                })
-                .done(function(data) {
-                    console.log(data)
-                })
-        }
+        // function ajax(id) {
+        //     // console.log(id)
+        //     $.ajax({
+        //             type: "POST",
+        //             url: "select2.php",
+        //             data: {
+        //                 "word": id
+        //             },
+        //             dataType: "json"
+        //         })
+        //         .done(function(data) {
+        //             console.log(data)
+        //         })
+        // }
     </script>
 </body>
 

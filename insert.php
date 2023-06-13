@@ -25,7 +25,6 @@ if (!empty($_FILES)) {
   } else {
     $r = rand(1, 3);
     $uploaded_path = 'images/dummy' . $r . '.jpg';
-    // $uploaded_path = 'images/hachiware.jpg';
     $img_path = $uploaded_path;
   }
 }

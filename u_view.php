@@ -149,12 +149,12 @@ if ($status == false) {
                             <span>どちらかといえば...</span>
                             <label class="inline-block mb-2 texr-gray-900"><select class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block p-1.5" name="type" id="type">
                                     <!-- <label class="block mb-2 texr-gray-900"><select name="type" id="type"> -->
-                                    <option value="ボケ" <?php if ($mydata["type"] == "ボケ") {
-                                                            echo "selected";
-                                                        } ?>>ボケ</option>
-                                    <option value="ツッコミ" <?php if ($mydata["type"] == "ツッコミ") {
-                                                                echo "selected";
-                                                            } ?>>ツッコミ</option>
+                                    <option value="ボケるほうが好きかなあ" <?php if ($mydata["type"] == "ボケるほうが好きかなあ") {
+                                                                    echo "selected";
+                                                                } ?>>ボケ</option>
+                                    <option value="ツッコミの方が好きかなあ" <?php if ($mydata["type"] == "ツッコミの方が好きかなあ") {
+                                                                        echo "selected";
+                                                                    } ?>>ツッコミ</option>
                                     <option value="ボケツッコミ両方いけるよ" <?php if ($mydata["type"] == "ボケツッコミ両方いけるよ") {
                                                                         echo "selected";
                                                                     } ?>>ボケツッコミ両方いけるよ</option>
@@ -194,7 +194,7 @@ if ($status == false) {
         <!-- ログアウト確認モーダル -->
         <?php include("logout_modal.php") ?>
     </div>
-    <div id="aaaa"></div>
+    <!-- <div id="aaaa"></div> -->
     <footer class="bg-gray-100">
         <?php include("footer.php") ?>
     </footer>
@@ -220,15 +220,15 @@ if ($status == false) {
             }
             reader.readAsDataURL(file); //3
         });
-
-        const colorpicker = document.getElementById('color');
-        // 次に、ピンの要素をarrowiconという変数に入れる
-        // const arrowicon = document.getElementById('arrow-icon');
-        colorpicker.addEventListener('input', function(e) { // カラーピッカーの入力値(inputの値)が変更されたら{}内の処理を実行する
-            // alert(e.target.value);// アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
-            // arrowicon.style.color = e.target.value; // アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
-            $("#aaaa").html(e.target.value)
-        });
+        //練習
+        // const colorpicker = document.getElementById('color');
+        // // 次に、ピンの要素をarrowiconという変数に入れる
+        // // const arrowicon = document.getElementById('arrow-icon');
+        // colorpicker.addEventListener('input', function(e) { // カラーピッカーの入力値(inputの値)が変更されたら{}内の処理を実行する
+        //     // alert(e.target.value);// アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
+        //     // arrowicon.style.color = e.target.value; // アイコンのCSSのcolorプロパティの値を右辺の値にする。右辺の値とはすなわち、カラーピッカーでの選択値である。
+        //     $("#aaaa").html(e.target.value)
+        // });
     </script>
 
 </body>

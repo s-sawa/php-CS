@@ -41,21 +41,6 @@ if ($status == false) {
     }
 }
 
-//1レコードだけ取得する方法
-
-// echo $row["lid"];
-// echo $row["nickname"];
-// echo "<br>";
-// echo $read_lid;
-// echo "<br>";
-// echo $readed_lid;
-
-
-// if ($myid == $row["lid"]) {
-//     echo "自分のカード,登録するボタン表示させない";
-// } else {
-//     echo "自分のカードではない、登録するボタン表示する。おしたらそのカードの何らかの情報をDBに記録し、一覧表示できるようにする";
-// }
 $_SESSION["register"] = $status;
 
 redirect("done.php");

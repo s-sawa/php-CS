@@ -33,18 +33,14 @@ if ($status == false) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>マイカード</title>
     <link rel="icon" href="./favicon/favicon.svg">
-    <!-- <link rel="stylesheet" href="./css/style.css"> -->
     <link rel="stylesheet" href="./css/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- <script src="./js/select.js"></script> -->
     <script src="./js/create_QR.js"></script>
     <script src="./js/main.js"></script>
-
     <style>
         .ff {
             font-family: 'Hannotate TC', sans-serif;
@@ -124,9 +120,6 @@ if ($status == false) {
             <!-- フォローしてもらうボタン -->
             <div class="w-full flex justify-center">
                 <button class="modal-open bg-emerald-600 hover:bg-emerald-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3" id="js-open" onclick='createQR(<?= $mydata["id"] ?>)'>フォローしてもらう</button>
-            </div>
-            <div class="w-full flex justify-center">
-                <a href="test.php?id=<?= $mydata["lid"] ?>" class=" bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline mt-3 absolute bottom-0 left-auto" onclick="deleteMsg('<?= $mydata["id"] ?>')">削除</a>
             </div>
             <!-- if終了 -->
         <?php } ?>
